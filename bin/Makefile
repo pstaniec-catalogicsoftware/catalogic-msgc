@@ -55,6 +55,6 @@ cmdline.o: cmdline.cpp
 	$(SED) -e 's:cmdline.cpp:cmdline.cpp:g' -e 's/\(cmdline\)\.o[ :]*/\1.o cmdline.d : /g' cmdline.dd > cmdline.d
 	cp -p cmdline.d cmdline.P
 	$(SED) -e 's/#.*//' -e 's/^[^:]*: *//' -e 's/ *\\$$//' -e '/^$$/ d' -e 's/$$/ :/' < cmdline.d >> cmdline.P
-	$(CPPCOMPILER) -c cmdline.e.cpp -static-libgcc -Wall -Wno-deprecated -Wno-missing-braces -O  -pthreads -o cmdline.o
+	$(CPPCOMPILER) -c cmdline.e.cpp -static-libgcc -Wall -Wno-deprecated -Wno-missing-braces -O  -pthread -o cmdline.o
 	rm -f cmdline.d cmdline.dd cmdline.e.cpp
 
